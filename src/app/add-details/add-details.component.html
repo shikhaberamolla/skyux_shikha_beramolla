@@ -1,0 +1,59 @@
+<app-nav>
+</app-nav>
+
+<main>
+  <sky-fluid-grid>
+    <sky-row>
+      <sky-column>
+        <h1>
+          {{ 'home_title' | skyAppResources }}
+        </h1>
+
+        <form #contactForm="ngForm" (ngSubmit)="onSubmit(contactForm)">
+ 
+          <div class="sky-form-group" style="max-width: 50%">
+            <label for="first-name" class="sky-control-label">
+              First name
+            </label>
+            <input class="sky-form-control" id="first-name" type="text" name="fname" ngModel>
+          </div>
+          <div class="sky-form-group" style="max-width: 50%">
+            <label for="last-name" class="sky-control-label">
+              Last name
+            </label>
+            <input class="sky-form-control" id="last-name" type="text" name="lname" ngModel> 
+          </div>
+          <div class="sky-form-group" style="max-width: 50%">
+            <label for="contact" class="sky-control-label">
+              Contact
+            </label>
+            <input class="sky-form-control" id="contact" type="text" name="contact" ngModel>
+          </div>
+          <div class="sky-form-group" style="max-width: 50%">
+            <label for="email" class="sky-control-label">
+              Email
+            </label>
+            <input class="sky-form-control" id="email" type="email"  name="email" ngModel>
+          </div>
+          <div class="sky-form-group" style="max-width: 50%">
+            <label for="dob" class="sky-control-label">
+              DOB
+            </label>
+            <input class="sky-form-control" id="dob" type="date" name="dob" ngModel>
+          </div>
+          <div class="sky-form-group" style="max-width: 50%">
+            <label for="address" class="sky-control-label">
+              Address
+            </label>
+            <input class="sky-form-control" id="address" type="text" name="addr" ngModel>
+          </div>
+
+          <p>
+            <button class="sky-btn sky-btn-primary" type="submit">Submit</button>
+          </p>
+         
+        </form>
+      </sky-column>
+    </sky-row>
+  </sky-fluid-grid>
+</main>
