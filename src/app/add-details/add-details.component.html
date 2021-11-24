@@ -15,41 +15,77 @@
             <label for="first-name" class="sky-control-label">
               First name
             </label>
-            <input class="sky-form-control" id="first-name" type="text" name="fname" ngModel>
+            <input class="sky-form-control" id="first-name" type="text" name="fname" #fname="ngModel" ngModel required>
+            <div *ngIf="!fname?.valid && (fname?.dirty || fname?.touched)">
+              <div *ngIf="fname.errors.required">
+                 First Name is required
+              </div>
+            </div>
           </div>
           <div class="sky-form-group" style="max-width: 50%">
             <label for="last-name" class="sky-control-label">
               Last name
             </label>
-            <input class="sky-form-control" id="last-name" type="text" name="lname" ngModel> 
+            <input class="sky-form-control" id="last-name" type="text" name="lname" #lname="ngModel" ngModel required> 
+            <div *ngIf="!lname?.valid && (lname?.dirty || lname?.touched)">
+              <div *ngIf="lname.errors.required">
+                 Last Name is required
+              </div>
+            </div>
           </div>
           <div class="sky-form-group" style="max-width: 50%">
             <label for="contact" class="sky-control-label">
               Contact
             </label>
-            <input class="sky-form-control" id="contact" type="text" name="contact" ngModel>
+            <input class="sky-form-control" id="contact" type="text" name="contact" #contact="ngModel" ngModel required pattern="^((\\+91-?)|0)?[0-9]{10}$">
+            <div *ngIf="!contact?.valid && (contact?.dirty || contact?.touched)">
+              <div *ngIf="contact.errors.required">
+                 Contact is required
+              </div>
+              <div *ngIf="contact.errors.pattern">
+                Invalid Contact
+              </div>
+            </div>
           </div>
           <div class="sky-form-group" style="max-width: 50%">
             <label for="email" class="sky-control-label">
               Email
             </label>
-            <input class="sky-form-control" id="email" type="email"  name="email" ngModel>
+            <input class="sky-form-control" id="email" type="email"  name="email" #email="ngModel" ngModel required email>
+            <div *ngIf="!email?.valid && (email?.dirty || email?.touched)">
+              <div *ngIf="email.errors.required">
+                 Contact is required
+              </div>
+              <div *ngIf="email.errors.email">
+                Invalid Email
+              </div>
+            </div>
           </div>
           <div class="sky-form-group" style="max-width: 50%">
             <label for="dob" class="sky-control-label">
               DOB
             </label>
-            <input class="sky-form-control" id="dob" type="date" name="dob" ngModel>
+            <input class="sky-form-control" id="dob" type="date" name="dob" #dob="ngModel" ngModel required>
+            <div *ngIf="!dob?.valid && (dob?.dirty || dob?.touched)">
+              <div *ngIf="dob.errors.required">
+                 DOB is required
+              </div>
+            </div>
           </div>
           <div class="sky-form-group" style="max-width: 50%">
             <label for="address" class="sky-control-label">
               Address
             </label>
-            <input class="sky-form-control" id="address" type="text" name="addr" ngModel>
+            <input class="sky-form-control" id="address" type="text" name="addr" #addr="ngModel" ngModel required>
+            <div *ngIf="!addr?.valid && (addr?.dirty || addr?.touched)">
+              <div *ngIf="addr.errors.required">
+                 Address is required
+              </div>
+            </div>
           </div>
 
           <p>
-            <button class="sky-btn sky-btn-primary" type="submit">Submit</button>
+            <button class="sky-btn sky-btn-primary" [disabled]="!contactForm.valid" type="submit">Submit</button>
           </p>
          
         </form>

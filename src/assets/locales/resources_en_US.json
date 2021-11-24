@@ -15,7 +15,7 @@
     "message": "SKY UX Template",
     "_description": "Title for the home component"
   },
-  "app_add_details": {
+  "app_nav_add": {
     "message": "Add Details",
     "_description": "The text for the Add Details top-level navigation item"
   }

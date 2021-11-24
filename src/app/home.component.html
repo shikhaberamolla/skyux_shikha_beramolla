@@ -1,12 +1,22 @@
 <app-nav>
 </app-nav>
 
-<div style="width: 70%">
-  <sky-ag-grid-wrapper>
-    <ag-grid-angular [gridOptions]="gridOptions" [rowData]="gridData">
-    </ag-grid-angular>
-  </sky-ag-grid-wrapper>
-</div>
+<sky-fluid-grid>
+  <sky-row>
+    <h3>User Details</h3>
+  </sky-row>
+  <sky-row>
+    <sky-column screenSmall="6">
+      <div>
+        <sky-ag-grid-wrapper>
+          <ag-grid-angular [gridOptions]="gridOptions" [rowData]="gridD">
+          </ag-grid-angular>
+        </sky-ag-grid-wrapper>
+      </div>
+    </sky-column>
+  </sky-row>
+</sky-fluid-grid>
+
 
 <!-- 
         <div class='table-responsive'>  

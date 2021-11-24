@@ -1,6 +1,7 @@
 import {
   Component
 } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { User } from '../models/User';
 import { UserService } from '../services/user.service';
 
@@ -11,20 +12,23 @@ import { UserService } from '../services/user.service';
 })
 export class AddDetailsComponent {
 
-  constructor(private userService:UserService) { }
+  constructor(private userService: UserService) { }
 
-  onSubmit(myform:any){
-      debugger;
-      let user:User = {
+  public onSubmit(myform: any) {
+
+      let user: User = {
         firstname: myform.value.fname,
         lastname: myform.value.lname,
         contact: myform.value.contact,
         email: myform.value.email,
         dob: myform.value.dob,
-        address: myform.value.addr,
+        address: myform.value.addr
       };
       this.userService.addUser(user);
-      let res= this.userService.getUsers();
-      console.log(res);
+      alert('Details added successfully');
+      this.reset(myform);
+  }
+  public reset(myform: NgForm) {
+    myform.resetForm();
   }
 }

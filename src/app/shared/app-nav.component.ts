@@ -14,7 +14,7 @@ export class AppNavComponent {
       path: '/'
     },
     {
-      titleKey: 'Add',
+      titleKey: 'app_nav_add',
       path: '/add-details'
     }
   ];
