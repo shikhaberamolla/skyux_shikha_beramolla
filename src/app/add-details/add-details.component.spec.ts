@@ -70,7 +70,7 @@ describe('Add details component', () => {
   });
 
   it('Form should be invalid', () => {
-    debugger;
+
     fixture.debugElement.query(By.css('#first-name')).nativeElement.value = '';
     fixture.debugElement.query(By.css('#last-name')).nativeElement.value = '';
     fixture.debugElement.query(By.css('#contact')).nativeElement.value = '';
@@ -78,13 +78,13 @@ describe('Add details component', () => {
     fixture.debugElement.query(By.css('#dob')).nativeElement.value = '';
     fixture.debugElement.query(By.css('#address')).nativeElement.value = '';
     let elt = fixture.debugElement.query(By.css('form')).nativeElement;
-    fixture.whenStable().then(()=>{
+    fixture.whenStable().then( () => {
       expect(elt.form.invalid).toBeTruthy();
-    });  
+    });
   });
 
   it('Form should be valid button', () => {
-    debugger;
+
     fixture.debugElement.query(By.css('#first-name')).nativeElement.value = 'abc';
     fixture.debugElement.query(By.css('#last-name')).nativeElement.value = 'xyz';
     fixture.debugElement.query(By.css('#contact')).nativeElement.value = '1234567890';
@@ -92,8 +92,8 @@ describe('Add details component', () => {
     fixture.debugElement.query(By.css('#dob')).nativeElement.value = '22-09-1998';
     fixture.debugElement.query(By.css('#address')).nativeElement.value = 'abcdef';
     let elt = fixture.debugElement.query(By.css('form')).nativeElement;
-    fixture.whenStable().then(()=>{
+    fixture.whenStable().then( () => {
       expect(elt.form.invalid).toBeFalsy();
-    });  
+    });
   });
 });
