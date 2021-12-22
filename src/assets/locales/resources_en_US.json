@@ -18,5 +18,13 @@
   "app_nav_add": {
     "message": "Add Details",
     "_description": "The text for the Add Details top-level navigation item"
+  },
+  "app_nav_test": {
+    "message": "Test SKYUX",
+    "_description": "The text for the test SKYUX top-level navigation item"
+  },
+  "app_nav_edit": {
+    "message": "Edit Details",
+    "_description": "The text for the Edit Details top-level navigation item"
   }
 }

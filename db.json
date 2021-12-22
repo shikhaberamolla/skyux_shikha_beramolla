@@ -1,0 +1,22 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "firstname": "Jack",
+      "lastname": "Ryan",
+      "contact": "1234567890",
+      "email": "jack@gmail.com",
+      "dob": "12-09-1996",
+      "address": "ascfg"
+    },
+    {
+      "id": 3,
+      "firstname": "John",
+      "lastname": "Brown",
+      "contact": "1234576545",
+      "email": "sb@gmail.com",
+      "dob": "01-12-2021",
+      "address": "abc 123 "
+    }
+  ]
+}

@@ -13,9 +13,17 @@ export class AppNavComponent {
       titleKey: 'app_nav_home',
       path: '/'
     },
+    // {
+    //   titleKey: 'app_nav_add',
+    //   path: '/add-details'
+    // },
     {
-      titleKey: 'app_nav_add',
-      path: '/add-details'
+      titleKey: 'app_nav_test',
+      path: '/test'
     }
+    // {
+    //   titleKey: 'app_nav_edit',
+    //   path: '/edit-details'
+    // }
   ];
 }

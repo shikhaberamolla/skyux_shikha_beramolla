@@ -1,16 +1,17 @@
 import {
-    TestBed
+  TestBed
 } from '@angular/core/testing';
 import {
-    SkyAppTestModule
+  SkyAppTestModule
 } from '@skyux-sdk/builder/runtime/testing/browser';
+import { of } from 'rxjs';
 import { User } from '../models/User';
 import { UserService } from './user.service';
 
   describe('User service', () => {
     let service: UserService;
     let mockUserList: User[] = [
-       { firstname: 'Shikha', lastname: 'Ber', contact: '123', email: 'a@gmail.com', dob: '22-10-1996', address: 'abcd' }
+       { id:1, firstname: 'Shikha', lastname: 'Ber', contact: '123', email: 'a@gmail.com', dob: '22-10-1996', address: 'abcd' }
     ];
      /**
       * This configureTestingModule function imports SkyAppTestModule, which brings in all of
@@ -29,7 +30,7 @@ import { UserService } from './user.service';
       });
 
       it('getUsers should return user data', () => {
-        service.userList = mockUserList;
+        spyOn(service,'getUsers').and.callFake(()=>{return of(mockUserList)});
         let res = service.getUsers();
         expect(res).toEqual(mockUserList);
       });

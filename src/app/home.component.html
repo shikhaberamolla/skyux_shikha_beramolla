@@ -3,20 +3,63 @@
 
 <sky-fluid-grid>
   <sky-row>
-    <h3>User Details</h3>
+    <h3 style="margin-left: 10px;">User Details</h3>
   </sky-row>
   <sky-row>
-    <sky-column screenSmall="6">
+    <sky-column>
       <div>
         <sky-ag-grid-wrapper>
-          <ag-grid-angular [gridOptions]="gridOptions" [rowData]="gridD">
+          <ag-grid-angular [gridOptions]="gridOptions" 
+          [rowData]="gridD" 
+          (cellClicked)="onCellClicked($event)">
           </ag-grid-angular>
         </sky-ag-grid-wrapper>
       </div>
+      <div class="center">
+        <button class="sky-btn sky-btn-primary" routerLink="add-details" >Add New User</button>
+      </div>   
     </sky-column>
   </sky-row>
 </sky-fluid-grid>
 
+<!-- <sky-modal>
+  <sky-modal-header>
+    Modal title
+  </sky-modal-header>
+  <sky-modal-content>
+    <sky-input-box>
+      <label
+        class="sky-control-label"
+        [for]="myInput.id"
+      >
+        An input inside a modal
+      </label>
+      <input
+        class="sky-form-control"
+        type="text"
+        skyId
+        #myInput="skyId"
+      >
+    </sky-input-box>
+  </sky-modal-content>
+  <sky-modal-footer>
+    <button
+      class="sky-btn sky-btn-primary sky-margin-inline-compact"
+      type="button"
+      (click)="instance.save()"
+    >
+      Save
+    </button>
+    <button
+      class="sky-btn sky-btn-link"
+      type="button"
+      (click)="instance.close()"
+      
+    >
+      Close
+    </button>
+  </sky-modal-footer>
+</sky-modal> -->
 
 <!-- 
         <div class='table-responsive'>  
