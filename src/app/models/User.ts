@@ -1,8 +1,8 @@
-export class User{
-    firstname:string;
-    lastname:string;
-    contact:string;
-    email:string;
-    dob:string;
-    address:string;
+export class User {
+    public firstname: string;
+    public lastname: string;
+    public contact: string;
+    public email: string;
+    public dob: string;
+    public address: string;
 }

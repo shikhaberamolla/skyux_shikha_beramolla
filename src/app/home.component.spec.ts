@@ -1,22 +1,23 @@
 import {
+  ComponentFixture,
   TestBed
 } from '@angular/core/testing';
-
 import {
   SkyAppTestModule
 } from '@skyux-sdk/builder/runtime/testing/browser';
-
 import {
   expect
 } from '@skyux-sdk/testing';
-
 // Component we're going to test
 import {
   HomeComponent
 } from './home.component';
+import { User } from './models/User';
+import { UserService } from './services/user.service';
 
 describe('Home component', () => {
-
+  let component: HomeComponent;
+  let fixture: ComponentFixture<HomeComponent>;
   /**
    * This configureTestingModule function imports SkyAppTestModule, which brings in all of
    * the SKY UX modules and components in your application for testing convenience. If this has
@@ -31,13 +32,29 @@ describe('Home component', () => {
     });
   });
 
-  it('should display a sky-alert', () => {
-    const fixture = TestBed.createComponent(HomeComponent);
-    const alertEl = fixture.nativeElement.querySelector('sky-alert');
+  beforeEach(() => {
+    fixture = TestBed.createComponent(HomeComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
 
-    // Using custom expect matchers
-    expect(alertEl).toBeVisible();
-    expect(alertEl).toHaveText(`You've just taken your first step into a larger world.`);
+  // it('should display a sky-alert', () => {
+  //   const alertEl = fixture.nativeElement.querySelector('sky-alert');
+
+  //   // Using custom expect matchers
+  //   expect(alertEl).toBeVisible();
+  //   expect(alertEl).toHaveText(`You've just taken your first step into a larger world.`);
+  // });
+
+  it('ngOnInit should set grid data', () => {
+    let userMock: User[] =  [{ firstname: 'Shikha', lastname: 'Ber', contact: '123', email: 'a@gmail.com', dob: '22-10-1996', address: 'abcd' }];
+    let service: UserService = new UserService();
+    spyOn(service, 'getUsers').and.returnValue(userMock);
+    component.ngOnInit();
+    fixture.whenStable()
+    .then( () => {
+        expect( component.gridD ).toEqual( userMock );
+    });
   });
 
 });

@@ -8,7 +8,7 @@ import {
 } from './app-sky.module';
 
 @NgModule({
-  imports:[AgGridModule.withComponents([])],
+  imports: [AgGridModule.withComponents([])],
   exports: [
     AppSkyModule,
     AgGridModule

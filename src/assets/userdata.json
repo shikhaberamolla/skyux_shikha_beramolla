@@ -1,4 +1,10 @@
 {
     "users":[
+        {    "firstname": "Jack",
+             "lastname": "Ryan",
+             "contact": "1234567890",
+             "email": "jack@gmail.com",
+             "dob": "12-09-1996",
+             "address": "ascfg"}
     ]
 }

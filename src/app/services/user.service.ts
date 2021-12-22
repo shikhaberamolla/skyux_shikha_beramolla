@@ -1,16 +1,16 @@
-import { Injectable } from '@angular/core';import { User } from '../models/User';
-import {users} from '../../assets/userdata.json';
- @Injectable({ 
-    providedIn: 'root', 
+import { Injectable } from '@angular/core';
+import * as users from '../../assets/userdata.json';
+import { User } from '../models/User';
+ @Injectable({
+    providedIn: 'root'
  })
- export class UserService { 
-    userlist:User[] = users;
-    constructor() { } 
-    addUser(user:User){
-        debugger;
-        this.userlist.push(user);
+ export class UserService {
+    public userList: User[] = (users as any).users;
+    constructor() { }
+    public addUser(user: User) {
+        this.userList.push(user);
     }
-    getUsers(){
-        return this.userlist;
+    public getUsers() {
+        return this.userList;
     }
  }
