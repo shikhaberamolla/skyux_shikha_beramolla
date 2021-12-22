@@ -3,15 +3,15 @@
 
 <main>
   <sky-fluid-grid>
-    <sky-row>
+    <sky-row class="center">
       <sky-column>
         <h1>
-          {{ 'home_title' | skyAppResources }}
+          Add User
         </h1>
 
         <form #contactForm="ngForm" (ngSubmit)="onSubmit(contactForm)">
  
-          <div class="sky-form-group" style="max-width: 50%">
+          <div class="sky-form-group">
             <label for="first-name" class="sky-control-label">
               First name
             </label>
@@ -22,7 +22,7 @@
               </div>
             </div>
           </div>
-          <div class="sky-form-group" style="max-width: 50%">
+          <div class="sky-form-group">
             <label for="last-name" class="sky-control-label">
               Last name
             </label>
@@ -33,7 +33,7 @@
               </div>
             </div>
           </div>
-          <div class="sky-form-group" style="max-width: 50%">
+          <div class="sky-form-group">
             <label for="contact" class="sky-control-label">
               Contact
             </label>
@@ -47,7 +47,7 @@
               </div>
             </div>
           </div>
-          <div class="sky-form-group" style="max-width: 50%">
+          <div class="sky-form-group">
             <label for="email" class="sky-control-label">
               Email
             </label>
@@ -61,18 +61,20 @@
               </div>
             </div>
           </div>
-          <div class="sky-form-group" style="max-width: 50%">
+          <div class="sky-form-group">
             <label for="dob" class="sky-control-label">
               DOB
             </label>
-            <input class="sky-form-control" id="dob" type="date" name="dob" #dob="ngModel" ngModel required>
+            <sky-datepicker> 
+            <input class="sky-form-control" skyDatepickerInput id="dob" type="text" name="dob" #dob="ngModel" ngModel required>
+          </sky-datepicker>
             <div *ngIf="!dob?.valid && (dob?.dirty || dob?.touched)">
               <div *ngIf="dob.errors.required">
                  DOB is required
               </div>
             </div>
           </div>
-          <div class="sky-form-group" style="max-width: 50%">
+          <div class="sky-form-group">
             <label for="address" class="sky-control-label">
               Address
             </label>

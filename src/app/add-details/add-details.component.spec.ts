@@ -95,5 +95,6 @@ describe('Add details component', () => {
     fixture.whenStable().then( () => {
       expect(elt.form.invalid).toBeFalsy();
     });
+    
   });
 });

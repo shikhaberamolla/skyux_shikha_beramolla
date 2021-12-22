@@ -1,0 +1,107 @@
+<sky-modal>
+    <sky-modal-header>
+      Modal title
+    </sky-modal-header>
+    
+    <sky-modal-content>
+      <form #editcontactForm="ngForm" (ngSubmit)="onSubmit(editcontactForm)">
+            <div class="sky-form-group" style="max-width: 50%">
+              <label for="first-name" class="sky-control-label">
+                First name
+              </label>
+              <input class="sky-form-control" id="first-name" type="text" name="fname" #fname="ngModel" [(ngModel)]="user.firstname" required>
+              <div *ngIf="!fname?.valid && (fname?.dirty || fname?.touched)">
+                <div *ngIf="fname.errors.required">
+                   First Name is required
+                </div>
+              </div>
+            </div>
+            <div class="sky-form-group" style="max-width: 50%">
+              <label for="last-name" class="sky-control-label">
+                Last name
+              </label>
+              <input class="sky-form-control" id="last-name" type="text" name="lname" #lname="ngModel" [(ngModel)]="user.lastname" required> 
+              <div *ngIf="!lname?.valid && (lname?.dirty || lname?.touched)">
+                <div *ngIf="lname.errors.required">
+                   Last Name is required
+                </div>
+              </div>
+            </div>
+            <div class="sky-form-group" style="max-width: 50%">
+              <label for="contact" class="sky-control-label">
+                Contact
+              </label>
+              <input class="sky-form-control" id="contact" type="text" name="contact" #contact="ngModel" [(ngModel)]="user.contact" required pattern="^((\\+91-?)|0)?[0-9]{10}$">
+              <div *ngIf="!contact?.valid && (contact?.dirty || contact?.touched)">
+                <div *ngIf="contact.errors.required">
+                   Contact is required
+                </div>
+                <div *ngIf="contact.errors.pattern">
+                  Invalid Contact
+                </div>
+              </div>
+            </div>
+            <div class="sky-form-group" style="max-width: 50%">
+              <label for="email" class="sky-control-label">
+                Email
+              </label>
+              <input class="sky-form-control" id="email" type="email"  name="email" #email="ngModel" [(ngModel)]="user.email" required email>
+              <div *ngIf="!email?.valid && (email?.dirty || email?.touched)">
+                <div *ngIf="email.errors.required">
+                   Contact is required
+                </div>
+                <div *ngIf="email.errors.email">
+                  Invalid Email
+                </div>
+              </div>
+            </div>
+            <div class="sky-form-group" style="max-width: 50%">
+              <label for="dob" class="sky-control-label">
+                DOB
+              </label>
+              <sky-datepicker> 
+              <input class="sky-form-control" id="dob" type="text" name="dob" #dob="ngModel" [(ngModel)]="user.dob" required>
+            </sky-datepicker>
+              <div *ngIf="!dob?.valid && (dob?.dirty || dob?.touched)">
+                <div *ngIf="dob.errors.required">
+                   DOB is required
+                </div>
+              </div>
+            </div>
+            <div class="sky-form-group" style="max-width: 50%">
+              <label for="address" class="sky-control-label">
+                Address
+              </label>
+              <input class="sky-form-control" id="address" type="text" name="addr" #addr="ngModel" [(ngModel)]="user.address" required>
+              <div *ngIf="!addr?.valid && (addr?.dirty || addr?.touched)">
+                <div *ngIf="addr.errors.required">
+                   Address is required
+                </div>
+              </div>
+            </div>
+  
+            <p>
+              <button  class="sky-btn sky-btn-primary" [disabled]="!editcontactForm.valid" type="submit">Submit</button>
+            </p>
+           
+        </form>
+    </sky-modal-content>
+    <!-- <sky-modal-footer>
+      <button
+        class="sky-btn sky-btn-primary sky-margin-inline-compact"
+        type="button"
+        [disabled]="!editcontactForm.valid" type="submit"
+      >
+        Save
+      </button>
+      <button
+        class="sky-btn sky-btn-link"
+        type="button"
+        (click)="instance.close()"
+        
+      >
+        Close
+      </button>
+    </sky-modal-footer> -->
+   
+  </sky-modal>

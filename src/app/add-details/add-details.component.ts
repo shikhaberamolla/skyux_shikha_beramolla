@@ -1,7 +1,8 @@
+import { DatePipe } from '@angular/common';
 import {
   Component
 } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { User } from '../models/User';
 import { UserService } from '../services/user.service';
 
@@ -12,23 +13,26 @@ import { UserService } from '../services/user.service';
 })
 export class AddDetailsComponent {
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private router:Router, public datepipe: DatePipe) { }
 
   public onSubmit(myform: any) {
-
       let user: User = {
+        id: null,
         firstname: myform.value.fname,
         lastname: myform.value.lname,
         contact: myform.value.contact,
         email: myform.value.email,
-        dob: myform.value.dob,
+        dob: this.datepipe.transform(myform.value.dob, 'dd-MM-yyyy'),
         address: myform.value.addr
       };
-      this.userService.addUser(user);
-      alert('Details added successfully');
-      this.reset(myform);
-  }
-  public reset(myform: NgForm) {
-    myform.resetForm();
+      this.userService.addUser(user).subscribe((response)=>{
+        if(response!=null){
+          alert('User added successfully');
+        }
+        else{
+          alert('Could not add user');
+        }
+      });
+      this.router.navigate(['/']);
   }
 }
