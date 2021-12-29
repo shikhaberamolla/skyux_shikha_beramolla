@@ -1,6 +1,13 @@
 <app-nav>
 </app-nav>
-
+<div *ngIf = "showErrMsg">
+  <sky-alert
+  alertType="danger"
+  [closeable]="false"
+  [closed]="false"
+>
+  {{errorMsg}}
+</sky-alert>
 <main>
   <sky-fluid-grid>
     <sky-row class="center">

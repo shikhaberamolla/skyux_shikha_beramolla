@@ -5,6 +5,7 @@ import { SkyAgGridService } from '@skyux/ag-grid';
 import {
   SkyModalService
 } from '@skyux/modals';
+import { SkyToastService, SkyToastType } from '@skyux/toast';
 import { GridApi, GridOptions, GridReadyEvent } from 'ag-grid-community';
 import {
   EditDetailsComponent
@@ -48,7 +49,8 @@ export class HomeComponent implements OnInit {
   public gridD: User[];
   public rowSelection: string;
   public helpKey: string = 'help-demo.html';
-
+  public showErrMsg:boolean;
+  public errorMsg: string;
   public modalSize: string = 'medium';
   public columnDefs = [
     {
@@ -80,7 +82,7 @@ export class HomeComponent implements OnInit {
     },
   ];
   
-  constructor(private userService: UserService, private agGridService: SkyAgGridService,  private modal: SkyModalService) {
+  constructor(private userService: UserService, private agGridService: SkyAgGridService,  private modal: SkyModalService, private toastService: SkyToastService) {
     this.rowSelection = 'single';
  }
 
@@ -91,7 +93,11 @@ export class HomeComponent implements OnInit {
         debugger;
         this.girdData = response;
         this.gridD = this.girdData; },
-      (error) => {}      
+      (error) => {
+        this.showErrMsg = true;
+        debugger;
+        this.errorMsg = error;
+      }      
     );
     //this.gridD = this.girdData;
 
@@ -126,10 +132,10 @@ editRow(event: any) {
     if (result) {
       this.userService.updateUser(result.data).subscribe((response) => {
         if(response != null){
-          alert('User details updated successfully');
+          this.openToastSuccess('User details updated successfully');
         }
         else{
-          alert('Could not update user details');
+          this.openToastFailure('Could not update user details');
         }
         this.ngOnInit();
       });
@@ -153,6 +159,20 @@ onCellClicked(event:any){
       this.editRow(event);
     }
   }
+}
+
+public openToastSuccess(msg: string): void {
+  this.toastService.openMessage(msg, {
+    type: SkyToastType.Success,
+    autoClose: true
+  });
+}
+
+public openToastFailure(msg: string): void {
+  this.toastService.openMessage(msg, {
+    type: SkyToastType.Danger,
+    autoClose: true
+  });
 }
 
 }
