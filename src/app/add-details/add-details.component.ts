@@ -3,6 +3,10 @@ import {
   Component
 } from '@angular/core';
 import { Router } from '@angular/router';
+import {
+  SkyToastService,
+  SkyToastType
+} from '@skyux/toast';
 import { User } from '../models/User';
 import { UserService } from '../services/user.service';
 
@@ -13,8 +17,9 @@ import { UserService } from '../services/user.service';
 })
 export class AddDetailsComponent {
 
-  constructor(private userService: UserService, private router:Router, public datepipe: DatePipe) { }
-
+  constructor(private userService: UserService, private router:Router, public datepipe: DatePipe, private toastService: SkyToastService) { }
+  public showErrMsg:boolean;
+  public errorMsg: string;
   public onSubmit(myform: any) {
       let user: User = {
         id: null,
@@ -27,12 +32,32 @@ export class AddDetailsComponent {
       };
       this.userService.addUser(user).subscribe((response)=>{
         if(response!=null){
-          alert('User added successfully');
+          this.openToastSuccess('User added successfully');
         }
         else{
-          alert('Could not add user');
+          this.openToastFailure('Could not add user');
         }
+      },
+      (error)=>{
+        this.showErrMsg = true;
+        this.errorMsg = error;
       });
       this.router.navigate(['/']);
+  }
+
+  public openToastSuccess(msg: string): void {
+    this.toastService.openMessage(msg, {
+      type: SkyToastType.Success,
+      autoClose: true
+
+    });
+  }
+
+  public openToastFailure(msg: string): void {
+    this.toastService.openMessage(msg, {
+      type: SkyToastType.Danger,
+      autoClose: true
+
+    });
   }
 }

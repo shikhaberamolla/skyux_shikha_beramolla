@@ -24,7 +24,6 @@ export class EditDetailsComponent {
   }
 
   public onSubmit(form:any){
-    debugger;
     let user:User = {
       id: this.user.id,
       firstname: form.value.fname,
@@ -37,5 +36,4 @@ export class EditDetailsComponent {
     //this.userService.setModalData(user);
     this.instance.close(user);
   }
-
 }

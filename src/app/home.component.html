@@ -1,6 +1,15 @@
 <app-nav>
 </app-nav>
 
+<div *ngIf = "showErrMsg">
+  <sky-alert
+  alertType="danger"
+  [closeable]="false"
+  [closed]="false"
+>
+  {{errorMsg}}
+</sky-alert>
+</div>
 <sky-fluid-grid>
   <sky-row>
     <h3 style="margin-left: 10px;">User Details</h3>
@@ -21,6 +30,7 @@
     </sky-column>
   </sky-row>
 </sky-fluid-grid>
+
 
 <!-- <sky-modal>
   <sky-modal-header>
